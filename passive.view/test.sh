@@ -1,4 +1,10 @@
 #/usr/bin/bash
 
-valac --pkg glib-2.0 *.vala -o test
-./test --run-tests
+if [ -f program ]; then
+    rm program
+fi
+valac --pkg gtk4 --pkg glib-2.0 *.vala  -o program
+
+if [ -f program ]; then
+    ./program --run-tests
+fi
