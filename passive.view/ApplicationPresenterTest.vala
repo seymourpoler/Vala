@@ -1,23 +1,22 @@
 using GLib;
 
-public class MainPresenterTest : Object {
+public class ApplicationPresenterTest : Object {
 
     public static int run(string[] args){
         GLib.Test.init(ref args);
     
-        GLib.Test.add_func("/MainPresenter/show", () =>{ 
-            var view = new MainVieMock();  
-            var presenter = new MainPresenter(view);
+        GLib.Test.add_func("/ApplicationPresenter/show", () =>{ 
+            var view = new ViewMock();  
+            var presenter = new ApplicationPresenter(view);
             
             presenter.show();
 
             assert(view.showCalled);
-
         });
 
-        GLib.Test.add_func("/MainPresenter/show-dialog", () =>{ 
-            var view = new MainVieMock();  
-            var presenter = new MainPresenter(view);
+        GLib.Test.add_func("/ApplicationPresenter/show-dialog", () =>{ 
+            var view = new ViewMock();  
+            var presenter = new ApplicationPresenter(view);
             
             presenter.showDialog();
 
@@ -29,7 +28,7 @@ public class MainPresenterTest : Object {
     }
 }
 
-private class MainVieMock : Object, IMainView {
+private class ViewMock : Object, IApplicationView {
     public bool showCalled { get; private set; }
     public bool showDialogCalled { get; private set; }
 
@@ -41,4 +40,3 @@ private class MainVieMock : Object, IMainView {
         this.showDialogCalled = true;
     }
 }
-

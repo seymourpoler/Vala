@@ -2,5 +2,5 @@
 
 ./compile.sh
 if [ -f program ]; then
-    ./program --run-tests
+    ./program
 fi
